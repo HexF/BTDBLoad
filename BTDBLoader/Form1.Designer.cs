@@ -37,13 +37,19 @@
             this.label3 = new System.Windows.Forms.Label();
             this.versionDisplay = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.Enabled = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Author = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.button5 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.progress = new System.Windows.Forms.ProgressBar();
+            this.button7 = new System.Windows.Forms.Button();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.fileSystemWatcher1 = new System.IO.FileSystemWatcher();
+            this.Enabled = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.ModName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Author = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.jetModWorker = new System.ComponentModel.BackgroundWorker();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher1)).BeginInit();
             this.SuspendLayout();
             // 
             // folderBrowserDialog1
@@ -126,7 +132,7 @@
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Enabled,
-            this.Name,
+            this.ModName,
             this.Author});
             this.dataGridView1.Location = new System.Drawing.Point(5, 151);
             this.dataGridView1.MultiSelect = false;
@@ -136,27 +142,6 @@
             this.dataGridView1.TabIndex = 9;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView1_CellContentClick);
             this.dataGridView1.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView1_CellValueChanged);
-            // 
-            // Enabled
-            // 
-            this.Enabled.FalseValue = "False";
-            this.Enabled.FillWeight = 20F;
-            this.Enabled.HeaderText = "Enable";
-            this.Enabled.Name = "Enabled";
-            this.Enabled.TrueValue = "True";
-            this.Enabled.Width = 40;
-            // 
-            // Name
-            // 
-            this.Name.HeaderText = "Name";
-            this.Name.Name = "Name";
-            this.Name.ReadOnly = true;
-            // 
-            // Author
-            // 
-            this.Author.HeaderText = "Author";
-            this.Author.Name = "Author";
-            this.Author.ReadOnly = true;
             // 
             // button5
             // 
@@ -186,11 +171,67 @@
             this.progress.TabIndex = 12;
             this.progress.Click += new System.EventHandler(this.Progress_Click);
             // 
+            // button7
+            // 
+            this.button7.Location = new System.Drawing.Point(295, 180);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(75, 23);
+            this.button7.TabIndex = 13;
+            this.button7.Text = "Jet to Mod";
+            this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.Button7_Click);
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            // 
+            // fileSystemWatcher1
+            // 
+            this.fileSystemWatcher1.EnableRaisingEvents = true;
+            this.fileSystemWatcher1.SynchronizingObject = this;
+            this.fileSystemWatcher1.Changed += new System.IO.FileSystemEventHandler(this.FileSystemWatcher1_Changed);
+            // 
+            // Enabled
+            // 
+            this.Enabled.FalseValue = "False";
+            this.Enabled.FillWeight = 20F;
+            this.Enabled.HeaderText = "Enable";
+            this.Enabled.Name = "Enabled";
+            this.Enabled.TrueValue = "True";
+            this.Enabled.Width = 40;
+            // 
+            // ModName
+            // 
+            this.ModName.HeaderText = "Name";
+            this.ModName.Name = "ModName";
+            this.ModName.ReadOnly = true;
+            // 
+            // Author
+            // 
+            this.Author.HeaderText = "Author";
+            this.Author.Name = "Author";
+            this.Author.ReadOnly = true;
+            // 
+            // jetModWorker
+            // 
+            this.jetModWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.JetModWorker_DoWork);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(43, 127);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(202, 13);
+            this.label2.TabIndex = 14;
+            this.label2.Text = "If the application has locked up, just wait.";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(382, 450);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.button7);
             this.Controls.Add(this.progress);
             this.Controls.Add(this.button6);
             this.Controls.Add(this.button5);
@@ -204,10 +245,11 @@
             this.Controls.Add(this.button1);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            
+            this.Name = "Form1";
             this.Text = "BTD Battles Mod Loader";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -227,9 +269,14 @@
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.ProgressBar progress;
+        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.IO.FileSystemWatcher fileSystemWatcher1;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Enabled;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Name;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ModName;
         private System.Windows.Forms.DataGridViewTextBoxColumn Author;
+        private System.ComponentModel.BackgroundWorker jetModWorker;
+        private System.Windows.Forms.Label label2;
     }
 }
 
