@@ -6,7 +6,7 @@ using System.Text;
 
 namespace BTDBLoader.Packer
 {
-    class Patch
+    public class Patch
     {
         public string File;
         public string Path;

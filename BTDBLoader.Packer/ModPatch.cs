@@ -6,7 +6,7 @@ using System.Text;
 
 namespace BTDBLoader.Packer
 {
-    class ModPatch
+    public class ModPatch
     {
         public string file;
         public Dictionary<string, JToken> patch;

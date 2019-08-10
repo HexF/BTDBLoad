@@ -5,7 +5,7 @@ using System.Text;
 
 namespace BTDBLoader.Packer
 {
-    class Mod
+    public class Mod
     {
         [Newtonsoft.Json.JsonProperty(PropertyName = "title")]
         public string Name;

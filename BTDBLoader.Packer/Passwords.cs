@@ -4,10 +4,10 @@ using System.Text;
 
 namespace BTDBLoader.Packer
 {
-    class Passwords
+    public class Passwords
     {
 
-        public static Dictionary<string, string> DJ_PASSWORDS = new Dictionary<string, string>
+        public static Dictionary<string, string> DJ = new Dictionary<string, string>
         {
             ["SW632"] = "9E7C0AFC9BCD1B0A"
         };

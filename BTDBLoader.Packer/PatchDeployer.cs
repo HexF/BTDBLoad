@@ -8,7 +8,7 @@ using System.Text;
 
 namespace BTDBLoader.Packer
 {
-    class PatchDeployer
+    public class PatchDeployer
     {
        
         public static string DeployPatch(string json, Patch patch)
@@ -122,7 +122,7 @@ namespace BTDBLoader.Packer
             ZipFile zf = ZipFile.Read(DataJetLocation);
             string loc = Path.Combine(StorageLocation, jv.ShortHand());
 
-            DJ_PASSWORDS.TryGetValue(jv.ShortHand(), out var pw);
+            Passwords.DJ.TryGetValue(jv.ShortHand(), out var pw);
             zf.Password = Password;
 
 
@@ -141,7 +141,7 @@ namespace BTDBLoader.Packer
         public static string GetFileFromJet(string file, string DataJetLocation, JetVersion jv, string Password = "RETR") {
             ZipFile zf = ZipFile.Read(DataJetLocation);
 
-            DJ_PASSWORDS.TryGetValue(jv.ShortHand(), out var pw);
+            Passwords.DJ.TryGetValue(jv.ShortHand(), out var pw);
             var pass = Password;
             if (Password == "RETR")
                 pass = pw;
@@ -167,7 +167,7 @@ namespace BTDBLoader.Packer
         {
             ZipFile zf = ZipFile.Read(DataJetLocation);
 
-            DJ_PASSWORDS.TryGetValue(jv.ShortHand(), out var pw);
+            Passwords.DJ.TryGetValue(jv.ShortHand(), out var pw);
             zf.Password = Password;
             if (Password == "RETR")
                 zf.Password = pw;

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace BTDBLoader.Packer
 {
-    class JetVersion
+    public class JetVersion
     {
         public string GameVersion = "6.3.2";
         public string Distributer = "SW"; //SW - Steam Windows
