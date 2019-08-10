@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.28803.452
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BTDBLoader", "BTDBLoader\BTDBLoader.csproj", "{B08556C6-37C3-4508-974D-EE540B7257E2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BTDBLoader.Packer", "BTDLoader.Packer\BTDBLoader.Packer.csproj", "{E526497B-E379-4FE8-8E06-750F2533DB83}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BTDBLoader.Packer", "BTDBLoader.Packer\BTDBLoader.Packer.csproj", "{E526497B-E379-4FE8-8E06-750F2533DB83}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

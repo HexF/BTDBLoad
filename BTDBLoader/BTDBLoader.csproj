@@ -89,7 +89,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\BTDLoader.Packer\BTDBLoader.Packer.csproj">
+    <ProjectReference Include="..\BTDBLoader.Packer\BTDBLoader.Packer.csproj">
       <Project>{e526497b-e379-4fe8-8e06-750f2533db83}</Project>
       <Name>BTDBLoader.Packer</Name>
     </ProjectReference>
