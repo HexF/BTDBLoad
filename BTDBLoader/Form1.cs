@@ -40,6 +40,8 @@ namespace BTDBLoader
         private void ReloadMods() {
             var mods = LoadMods();
             dataGridView1.Rows.Clear();
+            EnabledMods.Clear();
+            LoadedMods.Clear();
             foreach (Mod m in mods)
             {
                 dataGridView1.Rows.Add(true, m.Name, m.Author);
