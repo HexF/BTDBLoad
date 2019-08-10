@@ -9,7 +9,7 @@ namespace BTDBLoader
 {
     class Config
     {
-        public static string VERSION_STRING = "1.0.2a";
+        public static string VERSION_STRING = "1.1.0a";
 
         public static string APP_PATH = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),"btdml");
         public static string MODS_PATH = Path.Combine(APP_PATH, "mods");
